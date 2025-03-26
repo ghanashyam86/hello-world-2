@@ -8,8 +8,8 @@ div {text-align: center;}
 </head>
 <body>
 
-<h1 style="color:blue;"> Pulling image from docker hub thank you so much aws </h1>
-<h1 style="color:blue;"> This is project version 3.0 </h1>
+<h1 style="color:blue;"> Made changes in dev server </h1>
+<h1 style="color:blue;"> DEV server  </h1>
 </body>
 </html>
 
