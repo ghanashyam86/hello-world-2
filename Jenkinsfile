@@ -34,7 +34,7 @@ pipeline{
 		    steps{
 		       // sh 'docker stop new'
 		       // sh 'docker rm new'
-		        sh 'docker run -itd -p 8081:8080 --name cloths-container new'
+		        sh 'docker run -itd -p 8082:8080 --name cloths-container new'
 		    }
 		}
      }
