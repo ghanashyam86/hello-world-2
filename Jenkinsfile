@@ -32,8 +32,8 @@ pipeline{
 		}
 		stage('create docker container'){
 		    steps{
-		        sh 'docker stop homepage'
-		        sh 'docker rm homepage'
+		       // sh 'docker stop homepage'
+		       // sh 'docker rm homepage'
 		        sh 'docker run -itd -p 8081:8080 --name homepage-container homepage'
 		    }
 		}
