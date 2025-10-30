@@ -26,15 +26,15 @@ pipeline{
 		stage('build docker imgae'){
 		    steps{
 		        dir('/mnt/hello-world-2'){
-		            sh 'docker build -t new .'
+		            sh 'docker build -t homepage .'
 		        }
 		    }
 		}
 		stage('create docker container'){
 		    steps{
-		        sh 'docker stop new'
-		        sh 'docker rm new'
-		        sh 'docker run -itd -p 8081:8080 --name new new'
+		        sh 'docker stop homepage'
+		        sh 'docker rm homepage'
+		        sh 'docker run -itd -p 8081:8080 --name homepage-container homepage'
 		    }
 		}
      }
