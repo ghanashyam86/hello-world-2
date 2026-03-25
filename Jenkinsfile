@@ -1,3 +1,5 @@
+@Library('my-shared-library') _
+
 pipeline{
      agent any
 	   
@@ -8,33 +10,25 @@ pipeline{
      stages{
 	   stage('clone git repo'){
 	      steps{
-		     dir('/mnt/'){
-			   
-			    sh 'sudo rm -rf /mnt/hello-world-2'
-				sh 'git clone https://github.com/ghanashyam86/hello-world-2.git'
-				}
+				gitClone("https://github.com/ghanashyam86/hello-world-2.git")	
 			}
 		}
 		
 		stage('build project'){
 		    steps{
-		        dir('/mnt/hello-world-2'){
-		            sh 'mvn clean install -DskipTests'
-		        }
+		            mavenBuild('/mnt/hello-world-2')    
 		    }
 		}
 		stage('build docker imgae'){
 		    steps{
-		        dir('/mnt/hello-world-2'){
-		            sh 'docker build -t homepage .'
-		        }
+		            dockerBuild('/mnt/hello-world-2', "newimage")
+		            
 		    }
 		}
 		stage('create docker container'){
 		    steps{
-		       // sh 'docker stop homepage'
-		       // sh 'docker rm homepage'
-		        sh 'docker run -itd -p 8081:8080 --name homepage-container homepage'
+		        dockerRun("mynew-container", "newimage", "8080:8080"
+		    
 		    }
 		}
      }
